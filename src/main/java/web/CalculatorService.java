@@ -1,4 +1,4 @@
-package com.david.simplecalculator;
+package web;
 
 public class CalculatorService {
 
@@ -10,7 +10,7 @@ public class CalculatorService {
     	return a - b;
     }
 
-    public static Integer operationMult(Integer a, Integer b) {
+    public static Integer operationMul(Integer a, Integer b) {
        	return a / b;
     }
 

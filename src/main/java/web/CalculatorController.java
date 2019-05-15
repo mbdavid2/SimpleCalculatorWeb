@@ -1,4 +1,4 @@
-package com.david.simplecalculator;
+package web;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,10 +12,10 @@ public class CalculatorController {
         return "Salu2";
     }
 
-    @RequestMapping("/{left}/{op}/{right}")
-    public String OperationRequest(@PathVariable("left") Integer left, @PathVariable("operation") String operation, @PathVariable("right") Integer right) {
-       return CalculatorService.performMathOperation(left, operation, right);
-    }
+//    @RequestMapping("/{left}/{op}/{right}")
+//    public String OperationRequest(@PathVariable("left") Integer left, @PathVariable("operation") String operation, @PathVariable("right") Integer right) {
+//       return CalculatorService.performMathOperation(left, operation, right);
+//    }
 
     @RequestMapping("/add/{left}/{right}")
     public String performAddOperation(@PathVariable("left") Integer left, @PathVariable("right") Integer right) {
@@ -29,9 +29,9 @@ public class CalculatorController {
     	return Integer.toString(operationResult);
     }
 
-    @RequestMapping("/mult/{left}/{right}")
-    public String performMultOperation(@PathVariable("left") Integer left, @PathVariable("right") Integer right) {
-    	Integer operationResult = CalculatorService.operationMult(left, right);
+    @RequestMapping("/mul/{left}/{right}")
+    public String performMulOperation(@PathVariable("left") Integer left, @PathVariable("right") Integer right) {
+    	Integer operationResult = CalculatorService.operationMul(left, right);
     	return Integer.toString(operationResult);
     }
 
@@ -42,6 +42,7 @@ public class CalculatorController {
     		return Integer.toString(operationResult);
     	}
     	else {
-    		return "Error: division by 0";
+            return "Error: division by 0";
+        }
     }
 }

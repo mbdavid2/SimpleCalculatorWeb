@@ -6,12 +6,13 @@ expr
   |	expr op=ADD expr        # Add
   | expr op=SUB expr        # Sub
   |	NUMBER                  # Number
+  | SUB expr                # Negation
   |	'(' inside=expr ')'     # Par
   ;
 
-MUL: '*';
+MUL: 'x';
 DIV: '/';
 ADD: '+';
 SUB: '-';
 NEWLINE : [ \r\n\t]+ -> skip;
-NUMBER    : [0-9]+ ;
+NUMBER    : ('0'..'9')+ ('.' ('0'..'9')+)?;

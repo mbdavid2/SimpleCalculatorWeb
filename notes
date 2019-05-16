@@ -1,0 +1,2 @@
+- He asumit que al finalitzar una operació es manté el valor al fer una nova operació, enlloc de netejar. Per exemple si hi ha algun error (divisó per 0, al començar a escriure concatena amb el missatge)
+

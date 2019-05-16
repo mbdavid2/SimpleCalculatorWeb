@@ -1,14 +1,14 @@
-function linkRequestResults() {
-    // var form = $('#tweet-form');
-    var expression = $('#display').val();
+function requestResults() {
+    var inputExpr = $('#expression').val();
     $.ajax({
-        url: "/calculate/" + expression,
+        url: "/calculate",
         type: "GET",
+        data: {expression: inputExpr},
         success: function(operationResult) {
-            $('#display').val(operationResult);
+            $('#expression').val(operationResult);
         },
         error: function(error) {
-            alert("error");
+            alert("dasasd");
         }
     });
 }

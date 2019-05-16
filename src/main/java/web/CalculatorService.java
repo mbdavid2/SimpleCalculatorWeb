@@ -12,14 +12,22 @@ import parserAntlr.CalculatorParser;
 
 public class CalculatorService {
 
-    public static String computeExpression(String expression) {
-    	CharStream input = CharStreams.fromString(expression);
+    private static ParseTree parseExpression(String expression) {
+        CharStream input = CharStreams.fromString(expression);
         Lexer lexer = new CalculatorLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         CalculatorParser parser = new CalculatorParser(tokens);
-        ParseTree tree = parser.mainExpr();
+        return parser.mainExpr();
+    }
+
+    public static String computeExpression(String expression) {
+        ParseTree tree = parseExpression(expression);
+
+        System.out.println("Input expression: " + expression);
 
         CalculatorVisitorImpl calculator = new CalculatorVisitorImpl();
-        System.out.println("Result: " + calculator.visit(tree));
+        Double result = calculator.visit(tree);
+
+        return result.toString();
     }
 }

@@ -11,7 +11,7 @@ Per exemple si hi ha algun error (divisió per 0, en començar a escriure concat
 
 Executar:
 
-    - "mvn compile" a la carpeta arrel (on està el pom.xml).
+    - "mvn compile", "mvn install" a la carpeta arrel (on està el pom.xml).
     - Executar el jar de la carpeta target
     - El resultat es pot veure, una vegada estigui funcionant, a localhost:8080
 

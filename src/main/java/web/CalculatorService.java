@@ -48,7 +48,6 @@ public class CalculatorService {
             ParseTree tree = parseExpression(expression);
             CalculatorVisitorImpl calculator = new CalculatorVisitorImpl();
             Double result = calculator.visit(tree);
-            System.out.println("Result: " + result);
             return result.toString();
         }
         catch (Exception e) {

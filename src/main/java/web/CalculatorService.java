@@ -14,6 +14,11 @@ import parserAntlr.ErrorHandlerListener;
 
 public class CalculatorService {
 
+    /**
+     * Parses the given mathematical expression  
+     * @param expression the input mathematical expression
+     * @return the parsed syntax tree
+     */
     private static ParseTree parseExpression(String expression) throws ParseCancellationException {
         CharStream input = CharStreams.fromString(expression);
         Lexer lexer = new CalculatorLexer(input);
@@ -33,6 +38,11 @@ public class CalculatorService {
         return parser.mainExpr();
     }
 
+    /**
+     * Computes a mathematical expression after parsing it and traversing the tree
+     * @param expression the input mathematical expression
+     * @return the result of the operation
+     */
     protected static String computeExpression(String expression) throws ParseCancellationException {
         try {
             ParseTree tree = parseExpression(expression);

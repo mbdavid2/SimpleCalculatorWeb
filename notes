@@ -3,13 +3,21 @@ he acabat fent un parser amb antlr4 que rep l'expressió (un string) del FrontEn
 
 El FrontEnd (molt senzill visualment) està fet amb HTML i JS(jQuery) i el BackEnd amb Java, Spring MVC i antlr4 pel parser.
 
-El sistema funciona amb Spring Boot, el FrontEnd va concatenant les expressions i al demanar el resultat fa un request AJAX
-al controlador, que parseja l'expressió per obtenir l'arbre sintàctic i calcula el resultat que retorna i s'actualizta a la pantalla.
+El sistema funciona amb Spring Boot i Maven, el FrontEnd va concatenant l'input i al demanar el resultat fa un request AJAX
+al controlador, que parseja l'expressió per obtenir l'arbre sintàctic i calcula el resultat que retorna, actualiztant el valor a la pantalla.
 
 - He asumit que al finalitzar una operació es manté el valor al fer una nova operació, enlloc de netejar. 
   Per exemple si hi ha algun error (divisó per 0, al començar a escriure concatena amb el missatge)
 
-- Per afegir una nova funcionalitat a la calculadora (per exemple, pow) seria necessari:
+Executar:
+
+    - mvn compile a la carpeta arrel (on està el pom.xml).
+    - Executar el jar de la carpeta target
+    - El resultat es pot veure una vegada estigui funcionant a localhost:8080
+
+Nova funcionalitat:
+
+Per afegir una nova funcionalitat a la calculadora (per exemple, pow) seria necessari:
 
   - Afegir el botó al FrontEnd:
     <td><input type="button" value="^" onclick="calculator.expression.value += '^'"></td>
@@ -17,7 +25,7 @@ al controlador, que parseja l'expressió per obtenir l'arbre sintàctic i calcul
   - Definir a la gramàtica (parserAntlr/Calculator.g4) el nou element i l'identificador:
     | expr '^' expr                # Power
     
-  - Generar els nous fitxers antlr4 (antlr4 Calculator.g4)
+  - Generar els nous fitxers antlr4 (antlr4 Calculator.g4 a la carpeta on està la gramàtica o mvn compile)
   
   - Implementar a CalculatorVisitorImpl la functionalitat:
     @Override

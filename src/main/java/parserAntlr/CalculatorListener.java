@@ -66,18 +66,6 @@ public interface CalculatorListener extends ParseTreeListener {
 	 */
 	void exitSub(CalculatorParser.SubContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Number}
-	 * labeled alternative in {@link CalculatorParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void enterNumber(CalculatorParser.NumberContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code Number}
-	 * labeled alternative in {@link CalculatorParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void exitNumber(CalculatorParser.NumberContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code Negation}
 	 * labeled alternative in {@link CalculatorParser#expr}.
 	 * @param ctx the parse tree
@@ -89,6 +77,18 @@ public interface CalculatorListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitNegation(CalculatorParser.NegationContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Number}
+	 * labeled alternative in {@link CalculatorParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterNumber(CalculatorParser.NumberContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Number}
+	 * labeled alternative in {@link CalculatorParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitNumber(CalculatorParser.NumberContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code Mul}
 	 * labeled alternative in {@link CalculatorParser#expr}.

@@ -43,11 +43,12 @@ public class CalculatorService {
      * @param expression the input mathematical expression
      * @return the result of the operation
      */
-    protected static String computeExpression(String expression) throws ParseCancellationException {
+    public static String computeExpression(String expression) throws ParseCancellationException {
         try {
             ParseTree tree = parseExpression(expression);
             CalculatorVisitorImpl calculator = new CalculatorVisitorImpl();
             Double result = calculator.visit(tree);
+            System.out.println("Result: " + result);
             return result.toString();
         }
         catch (Exception e) {

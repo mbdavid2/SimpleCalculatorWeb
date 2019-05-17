@@ -1,0 +1,15 @@
+.buttonStyle {
+    background-color: #15db3d; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 24px;
+}
+
+.result {
+    font-size: 20px;
+}

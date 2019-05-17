@@ -1,13 +1,13 @@
 grammar Calculator;
 mainExpr: expr+;
 expr
-  : expr op=MUL expr        # Mul
+  : '(' inside=expr ')'     # Par
+  | SUB expr                # Negation
+  | expr op=MUL expr        # Mul
   | expr op=DIV expr        # Div
   |	expr op=ADD expr        # Add
   | expr op=SUB expr        # Sub
   |	NUMBER                  # Number
-  | SUB expr                # Negation
-  |	'(' inside=expr ')'     # Par
   ;
 
 MUL: 'x';

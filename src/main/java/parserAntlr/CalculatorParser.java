@@ -252,23 +252,6 @@ public class CalculatorParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
-	public static class NumberContext extends ExprContext {
-		public TerminalNode NUMBER() { return getToken(CalculatorParser.NUMBER, 0); }
-		public NumberContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CalculatorListener ) ((CalculatorListener)listener).enterNumber(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CalculatorListener ) ((CalculatorListener)listener).exitNumber(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CalculatorVisitor ) return ((CalculatorVisitor<? extends T>)visitor).visitNumber(this);
-			else return visitor.visitChildren(this);
-		}
-	}
 	public static class NegationContext extends ExprContext {
 		public TerminalNode SUB() { return getToken(CalculatorParser.SUB, 0); }
 		public ExprContext expr() {
@@ -286,6 +269,23 @@ public class CalculatorParser extends Parser {
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof CalculatorVisitor ) return ((CalculatorVisitor<? extends T>)visitor).visitNegation(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class NumberContext extends ExprContext {
+		public TerminalNode NUMBER() { return getToken(CalculatorParser.NUMBER, 0); }
+		public NumberContext(ExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof CalculatorListener ) ((CalculatorListener)listener).enterNumber(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof CalculatorListener ) ((CalculatorListener)listener).exitNumber(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CalculatorVisitor ) return ((CalculatorVisitor<? extends T>)visitor).visitNumber(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -332,14 +332,18 @@ public class CalculatorParser extends Parser {
 			setState(17);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
-			case NUMBER:
+			case T__0:
 				{
-				_localctx = new NumberContext(_localctx);
+				_localctx = new ParContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
 
 				setState(10);
-				match(NUMBER);
+				match(T__0);
+				setState(11);
+				((ParContext)_localctx).inside = expr(0);
+				setState(12);
+				match(T__1);
 				}
 				break;
 			case SUB:
@@ -347,23 +351,19 @@ public class CalculatorParser extends Parser {
 				_localctx = new NegationContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(11);
+				setState(14);
 				match(SUB);
-				setState(12);
-				expr(2);
+				setState(15);
+				expr(6);
 				}
 				break;
-			case T__0:
+			case NUMBER:
 				{
-				_localctx = new ParContext(_localctx);
+				_localctx = new NumberContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(13);
-				match(T__0);
-				setState(14);
-				((ParContext)_localctx).inside = expr(0);
-				setState(15);
-				match(T__1);
+				setState(16);
+				match(NUMBER);
 				}
 				break;
 			default:
@@ -386,11 +386,11 @@ public class CalculatorParser extends Parser {
 						_localctx = new MulContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(19);
-						if (!(precpred(_ctx, 7))) throw new FailedPredicateException(this, "precpred(_ctx, 7)");
+						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
 						setState(20);
 						((MulContext)_localctx).op = match(MUL);
 						setState(21);
-						expr(8);
+						expr(6);
 						}
 						break;
 					case 2:
@@ -398,11 +398,11 @@ public class CalculatorParser extends Parser {
 						_localctx = new DivContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(22);
-						if (!(precpred(_ctx, 6))) throw new FailedPredicateException(this, "precpred(_ctx, 6)");
+						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
 						setState(23);
 						((DivContext)_localctx).op = match(DIV);
 						setState(24);
-						expr(7);
+						expr(5);
 						}
 						break;
 					case 3:
@@ -410,11 +410,11 @@ public class CalculatorParser extends Parser {
 						_localctx = new AddContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(25);
-						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
+						if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
 						setState(26);
 						((AddContext)_localctx).op = match(ADD);
 						setState(27);
-						expr(6);
+						expr(4);
 						}
 						break;
 					case 4:
@@ -422,11 +422,11 @@ public class CalculatorParser extends Parser {
 						_localctx = new SubContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(28);
-						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
+						if (!(precpred(_ctx, 2))) throw new FailedPredicateException(this, "precpred(_ctx, 2)");
 						setState(29);
 						((SubContext)_localctx).op = match(SUB);
 						setState(30);
-						expr(5);
+						expr(3);
 						}
 						break;
 					}
@@ -459,13 +459,13 @@ public class CalculatorParser extends Parser {
 	private boolean expr_sempred(ExprContext _localctx, int predIndex) {
 		switch (predIndex) {
 		case 0:
-			return precpred(_ctx, 7);
-		case 1:
-			return precpred(_ctx, 6);
-		case 2:
 			return precpred(_ctx, 5);
-		case 3:
+		case 1:
 			return precpred(_ctx, 4);
+		case 2:
+			return precpred(_ctx, 3);
+		case 3:
+			return precpred(_ctx, 2);
 		}
 		return true;
 	}
@@ -475,12 +475,12 @@ public class CalculatorParser extends Parser {
 		"\3\3\2\6\2\b\n\2\r\2\16\2\t\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\5\3\24\n\3"+
 		"\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\7\3\"\n\3\f\3\16\3%\13"+
 		"\3\3\3\2\3\4\4\2\4\2\2\2+\2\7\3\2\2\2\4\23\3\2\2\2\6\b\5\4\3\2\7\6\3\2"+
-		"\2\2\b\t\3\2\2\2\t\7\3\2\2\2\t\n\3\2\2\2\n\3\3\2\2\2\13\f\b\3\1\2\f\24"+
-		"\7\n\2\2\r\16\7\b\2\2\16\24\5\4\3\4\17\20\7\3\2\2\20\21\5\4\3\2\21\22"+
-		"\7\4\2\2\22\24\3\2\2\2\23\13\3\2\2\2\23\r\3\2\2\2\23\17\3\2\2\2\24#\3"+
-		"\2\2\2\25\26\f\t\2\2\26\27\7\5\2\2\27\"\5\4\3\n\30\31\f\b\2\2\31\32\7"+
-		"\6\2\2\32\"\5\4\3\t\33\34\f\7\2\2\34\35\7\7\2\2\35\"\5\4\3\b\36\37\f\6"+
-		"\2\2\37 \7\b\2\2 \"\5\4\3\7!\25\3\2\2\2!\30\3\2\2\2!\33\3\2\2\2!\36\3"+
+		"\2\2\b\t\3\2\2\2\t\7\3\2\2\2\t\n\3\2\2\2\n\3\3\2\2\2\13\f\b\3\1\2\f\r"+
+		"\7\3\2\2\r\16\5\4\3\2\16\17\7\4\2\2\17\24\3\2\2\2\20\21\7\b\2\2\21\24"+
+		"\5\4\3\b\22\24\7\n\2\2\23\13\3\2\2\2\23\20\3\2\2\2\23\22\3\2\2\2\24#\3"+
+		"\2\2\2\25\26\f\7\2\2\26\27\7\5\2\2\27\"\5\4\3\b\30\31\f\6\2\2\31\32\7"+
+		"\6\2\2\32\"\5\4\3\7\33\34\f\5\2\2\34\35\7\7\2\2\35\"\5\4\3\6\36\37\f\4"+
+		"\2\2\37 \7\b\2\2 \"\5\4\3\5!\25\3\2\2\2!\30\3\2\2\2!\33\3\2\2\2!\36\3"+
 		"\2\2\2\"%\3\2\2\2#!\3\2\2\2#$\3\2\2\2$\5\3\2\2\2%#\3\2\2\2\6\t\23!#";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());

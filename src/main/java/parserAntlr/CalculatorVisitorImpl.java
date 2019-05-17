@@ -10,6 +10,13 @@ public class CalculatorVisitorImpl extends CalculatorBaseVisitor<Double> {
     }
 
     @Override
+    public Double visitSub(CalculatorParser.SubContext ctx) {
+        Double a = this.visit(ctx.expr(0));
+        Double b = this.visit(ctx.expr(1));
+        return a - b;
+    }
+
+    @Override
     public Double visitNegation(CalculatorParser.NegationContext ctx) {
         Double toNegate = this.visit(ctx.expr());
         return -toNegate;
@@ -25,13 +32,6 @@ public class CalculatorVisitorImpl extends CalculatorBaseVisitor<Double> {
         Double a = this.visit(ctx.expr(0));
         Double b = this.visit(ctx.expr(1));
         return a + b;
-    }
-
-    @Override
-    public Double visitSub(CalculatorParser.SubContext ctx) {
-        Double a = this.visit(ctx.expr(0));
-        Double b = this.visit(ctx.expr(1));
-        return a - b;
     }
 
     @Override

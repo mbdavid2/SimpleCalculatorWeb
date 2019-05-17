@@ -8,7 +8,7 @@ function requestResults() {
             $('#expression').val(operationResult);
         },
         error: function(error) {
-            alert("dasasd");
+            alert(error);
         }
     });
 }

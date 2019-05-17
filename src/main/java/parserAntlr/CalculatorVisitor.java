@@ -45,19 +45,19 @@ public interface CalculatorVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitSub(CalculatorParser.SubContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code Number}
-	 * labeled alternative in {@link CalculatorParser#expr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitNumber(CalculatorParser.NumberContext ctx);
-	/**
 	 * Visit a parse tree produced by the {@code Negation}
 	 * labeled alternative in {@link CalculatorParser#expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitNegation(CalculatorParser.NegationContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code Number}
+	 * labeled alternative in {@link CalculatorParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNumber(CalculatorParser.NumberContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code Mul}
 	 * labeled alternative in {@link CalculatorParser#expr}.

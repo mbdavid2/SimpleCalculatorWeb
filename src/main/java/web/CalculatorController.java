@@ -11,7 +11,7 @@ public class CalculatorController {
 	 * @return the result of the operation
 	 */
     @RequestMapping("/calculate")
-    public String performAddOperation(@RequestParam("expression") String expression) {
+    public String performOperation(@RequestParam("expression") String expression) {
     	return CalculatorService.computeExpression(expression);
     }
 }

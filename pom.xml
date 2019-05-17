@@ -58,6 +58,7 @@
                 <artifactId>antlr4-maven-plugin</artifactId>
                 <version>4.7.1</version>
                 <configuration>
+                    <sourceDirectory>${basedir}/src/main/java/parserAntlr</sourceDirectory>
                     <arguments>
                         <argument>-listener</argument>
                         <argument>-visitor</argument>

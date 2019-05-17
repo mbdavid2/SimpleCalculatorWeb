@@ -5,43 +5,44 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <script type="text/javascript" src="index.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
 <form name="calculator">
     <table>
         <tr>
             <td colspan="4">
-                <input type="text" name="expression" id="expression" disabled>
+                <input type="text" class="result" id="expression" disabled>
             </td>
         </tr>
         <tr>
-            <td><input type="button" value="1" onclick="calculator.expression.value += '1'"></td>
-            <td><input type="button" value="2" onclick="calculator.expression.value += '2'"></td>
-            <td><input type="button" value="3" onclick="calculator.expression.value += '3'"></td>
-            <td><input type="button" value="/" onclick="calculator.expression.value += '/'"></td>
+            <td><input type="button" class="buttonStyle" value="1" onclick="calculator.expression.value += '1'"></td>
+            <td><input type="button" class="buttonStyle" value="2" onclick="calculator.expression.value += '2'"></td>
+            <td><input type="button" class="buttonStyle" value="3" onclick="calculator.expression.value += '3'"></td>
+            <td><input type="button" class="buttonStyle" value="/" onclick="calculator.expression.value += '/'"></td>
         </tr>
         <tr>
-            <td><input type="button" value="4" onclick="calculator.expression.value += '4'"></td>
-            <td><input type="button" value="5" onclick="calculator.expression.value += '5'"></td>
-            <td><input type="button" value="6" onclick="calculator.expression.value += '6'"></td>
-            <td><input type="button" value="x" onclick="calculator.expression.value += 'x'"></td>
+            <td><input type="button" class="buttonStyle" value="4" onclick="calculator.expression.value += '4'"></td>
+            <td><input type="button" class="buttonStyle" value="5" onclick="calculator.expression.value += '5'"></td>
+            <td><input type="button" class="buttonStyle" value="6" onclick="calculator.expression.value += '6'"></td>
+            <td><input type="button" class="buttonStyle" value="x" onclick="calculator.expression.value += 'x'"></td>
         </tr>
         <tr>
-            <td><input type="button" value="7" onclick="calculator.expression.value += '7'"></td>
-            <td><input type="button" value="8" onclick="calculator.expression.value += '8'"></td>
-            <td><input type="button" value="9" onclick="calculator.expression.value += '9'"></td>
-            <td><input type="button" value="-" onclick="calculator.expression.value += '-'"></td>
+            <td><input type="button" class="buttonStyle" value="7" onclick="calculator.expression.value += '7'"></td>
+            <td><input type="button" class="buttonStyle" value="8" onclick="calculator.expression.value += '8'"></td>
+            <td><input type="button" class="buttonStyle" value="9" onclick="calculator.expression.value += '9'"></td>
+            <td><input type="button" class="buttonStyle" value="-" onclick="calculator.expression.value += '-'"></td>
         </tr>
         <tr>
-            <td><input type="button" value="0" onclick="calculator.expression.value += '0'"></td>
-            <td><input type="button" value="." onclick="calculator.expression.value += '.'"></td>
-            <td><input type="button" value="=" onclick="return requestResults();"></td>
-            <td><input type="button" value="+" onclick="calculator.expression.value += '+'"></td>
+            <td><input type="button" class="buttonStyle" value="0" onclick="calculator.expression.value += '0'"></td>
+            <td><input type="button" class="buttonStyle" value="." onclick="calculator.expression.value += '.'"></td>
+            <td><input type="button" class="buttonStyle" value="=" onclick="return requestResults();"></td>
+            <td><input type="button" class="buttonStyle" value="+" onclick="calculator.expression.value += '+'"></td>
         </tr>
         <tr>
-            <td><input type="button" value="(" onclick="calculator.expression.value += '('"></td>
-            <td><input type="button" value=")" onclick="calculator.expression.value += ')'"></td>
-            <td><input type="button" value="C" onclick="calculator.expression.value = ''"></td>
+            <td><input type="button" class="buttonStyle" value="(" onclick="calculator.expression.value += '('"></td>
+            <td><input type="button" class="buttonStyle" value=")" onclick="calculator.expression.value += ')'"></td>
+            <td><input type="button" class="buttonStyle" value="C" onclick="calculator.expression.value = ''"></td>
         </tr>
     </table>
 </form>

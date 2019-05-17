@@ -1,2 +1,30 @@
-- He asumit que al finalitzar una operació es manté el valor al fer una nova operació, enlloc de netejar. Per exemple si hi ha algun error (divisó per 0, al començar a escriure concatena amb el missatge)
+Com les expressions podien tenir parentèsis i podria haver ambiguitat amb l'ordre de les operacions (2+3*4 ha de multiplicar primer 3*4)
+he acabat fent un parser amb antlr4 que rep l'expressió (un string) del FrontEnd.
 
+El FrontEnd (molt senzill visualment) està fet amb HTML i JS(jQuery) i el BackEnd amb Java, Spring MVC i antlr4 pel parser.
+
+El sistema funciona amb Spring Boot, el FrontEnd va concatenant les expressions i al demanar el resultat fa un request AJAX
+al controlador, que parseja l'expressió per obtenir l'arbre sintàctic i calcula el resultat que retorna i s'actualizta a la pantalla.
+
+- He asumit que al finalitzar una operació es manté el valor al fer una nova operació, enlloc de netejar. 
+  Per exemple si hi ha algun error (divisó per 0, al començar a escriure concatena amb el missatge)
+
+- Per afegir una nova funcionalitat a la calculadora (per exemple, pow) seria necessari:
+
+  - Afegir el botó al FrontEnd:
+    <td><input type="button" value="^" onclick="calculator.expression.value += '^'"></td>
+    
+  - Definir a la gramàtica (parserAntlr/Calculator.g4) el nou element i l'identificador:
+    | expr '^' expr                # Power
+    
+  - Generar els nous fitxers antlr4 (antlr4 Calculator.g4)
+  
+  - Implementar a CalculatorVisitorImpl la functionalitat:
+    @Override
+    public Double visitPower(CalculatorParser.PowerContext ctx) {
+        Double base = this.visit(ctx.expr(0));
+        Double exponent = this.visit(ctx.expr(1));
+        return Math.pow(base, exponent);
+    }
+  
+  
